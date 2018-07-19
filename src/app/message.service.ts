@@ -5,13 +5,13 @@ import {Observable, Subject} from 'rxjs/index';
   providedIn: 'root'
 })
 export class MessageService {
-  private subject = new Subject<any>();
+  private subject = new Subject<string>();
 
   sendMessage(message: string) {
-    this.subject.next({ text: message });
+    this.subject.next( message );
   }
 
-  getMessage(): Observable<any> {
+  getMessage(): Observable<string> {
     return this.subject.asObservable();
   }
 }

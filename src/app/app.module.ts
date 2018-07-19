@@ -5,12 +5,14 @@ import { AppComponent } from './app.component';
 import { SenderComponent } from './sender/sender.component';
 import { ReceiverComponent } from './receiver/receiver.component';
 import {FormsModule} from '@angular/forms';
+import { SendReceiveComponent } from './send-receive/send-receive.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     SenderComponent,
-    ReceiverComponent
+    ReceiverComponent,
+    SendReceiveComponent
   ],
   imports: [
     BrowserModule,

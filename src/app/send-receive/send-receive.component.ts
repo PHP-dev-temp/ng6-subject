@@ -1,17 +1,15 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
-import {Subscription} from 'rxjs/index';
 import {MessageService} from '../message.service';
+import {Subscription} from 'rxjs/index';
 
 @Component({
-  selector: 'app-receiver',
-  templateUrl: './receiver.component.html',
-  styleUrls: ['./receiver.component.css']
+  selector: 'app-send-receive',
+  templateUrl: './send-receive.component.html',
+  styleUrls: ['./send-receive.component.css']
 })
-export class ReceiverComponent implements OnDestroy {
-
-  message: string;
+export class SendReceiveComponent implements OnInit, OnDestroy {
+  message = '';
   subscription: Subscription;
-
   constructor(private messageService: MessageService) {
     // subscribe to home component messages
     this.subscription = this.messageService.getMessage().subscribe(message => {
@@ -20,9 +18,17 @@ export class ReceiverComponent implements OnDestroy {
     });
   }
 
+  ngOnInit() {
+  }
+
+  onChange() {
+    this.messageService.sendMessage(this.message);
+  }
+
   ngOnDestroy() {
     // unsubscribe to ensure no memory leaks
     this.subscription.unsubscribe();
   }
+
 
 }
